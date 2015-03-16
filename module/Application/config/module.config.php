@@ -53,6 +53,9 @@ return array(
         ),
     ),
     'service_manager' => array(
+        'invokables' => array(
+            'ExampleService' => 'Application\Service\Example',
+        ),
         'factories' => array(
             'cache' => '\Zend\Cache\Service\StorageCacheFactory'
             /*'Zend\Cache\StorageFactory' => function() {
@@ -95,7 +98,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index'   => 'Application\Controller\IndexController',
+            'Application\Controller\Comment' => 'Application\Controller\CommentController',
         ),
     ),
     'view_manager' => array(

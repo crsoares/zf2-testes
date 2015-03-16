@@ -11,6 +11,8 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Application\Model\Hydrator\SampleModelHydrator;
+use Application\Model\Hydrator\Strategy\SampleHydratorStrategy;
 
 class IndexController extends AbstractActionController
 {
@@ -19,14 +21,37 @@ class IndexController extends AbstractActionController
     	/*$output = new \Application\Model\LongOutput();
 
     	echo '<!-- ' . $output->run(1500) . ' -->';*/
-    	$pattern = \Zend\Cache\PatternFactory::factory(
+
+    	/*$pattern = \Zend\Cache\PatternFactory::factory(
     		'class',
     		array(
     			'storage' => $this->getServiceLocator()->get('cache'),
     			'class' => '\Application\Model\LongOutput'
     		));
 
-    	echo '<!-- ' . $pattern->call('run', array(1500)) . ' -->';
+    	echo '<!-- ' . $pattern->call('run', array(1500)) . ' -->';*/
+
+        echo $this->getServiceLocator()->get('ExampleService')->encodeMyString("Service? Easily created!");die;
+
+        $model = new \Application\Model\SampleModel();
+
+        $data = array(
+            'id' => 'Some Id',
+            'value' => 'Some Awesome Value',
+            'description' => 'Pecunia non olet',
+        );
+
+        $hydrator = new SampleModelHydrator();
+        $hydrator->addStrategy(
+            "primary",
+            new SampleHydratorStrategy()
+        );
+
+        $newObject = $hydrator->hydrate($data, $model);
+
+        $extract = $hydrator->extract($newObject);
+
+        echo "<pre>" . print_r($extract, true) . "</pre>";
 
         return new ViewModel();
     }

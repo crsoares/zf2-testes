@@ -1,10 +1,12 @@
-<?php foreach ($this->comments as $comment) : ?>
-		<tr>
-			<td>
-				<?php echo $comment['name']; ?>
-			</td>
-			<td>
-				<?php echo $comment['comment']; ?>
-			</td>
-		</tr>
-<?php endforeach; ?>
+<table>
+	<?php foreach ($this->comments as $comment) : ?>
+			<tr>
+				<td>
+					<?php echo $comment['name']; ?>
+				</td>
+				<td>
+					<?php echo $comment['comment']; ?>
+				</td>
+			</tr>
+	<?php endforeach; ?>
+</table>
