@@ -1,4 +1,5 @@
 <?php
+namespace Helloworld;
 
 return array(
 	'di' => array(
@@ -23,7 +24,7 @@ return array(
 			'preferences' => array(
 				'Helloworld\Service\LoggingServiceInterface' => 'Helloworld\Service\LoggingService',
 			),
-			'Hellowrold\Service\LoggingService' => array(
+			'Helloworld\Service\LoggingService' => array(
 				'parameters' => array(
 					'logfile' => __DIR__ . '/../../data/log.txt',
 				),
