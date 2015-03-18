@@ -14,6 +14,10 @@ use Zend\View\Model\ViewModel;
 use Application\Model\Hydrator\SampleModelHydrator;
 use Application\Model\Hydrator\Strategy\SampleHydratorStrategy;
 use Application\Form\NormalForm;
+use Application\Form\AnnotationForm;
+use Zend\Form\Annotation\AnnotationBuilder;
+use Application\Form\NormalFormValidator;
+use Application\Model\SampleModel;;
 
 class IndexController extends AbstractActionController
 {
@@ -64,5 +68,47 @@ class IndexController extends AbstractActionController
     	return new ViewModel(array(
     		'form' => $form,
     	));
+    }
+
+    public function formAnnotationAction()
+    {
+        $viewModel = new ViewModel();
+
+        $builder = new AnnotationBuilder();
+
+        $annotationForm = new AnnotationForm();
+
+        $form = $builder->createForm($annotationForm);
+
+        $viewModel->setVariable('form', $form);
+
+        return $viewModel;
+    }
+
+    public function validatorAction()
+    {
+        $form = new NormalForm();
+
+        $request = $this->getRequest();
+
+        if ($request->isPost() === true) {
+            $formValidator = new NormalFormValidator();
+
+            $form->setInputFilter($formValidator->getInputFilter());
+
+            $form->setData($request->getPost());
+
+            if ($form->isValid() === true) {
+                $user = new SampleModel();
+
+                $user->doStuff($form->getData());
+
+                unset($user);
+            }
+        }
+
+        return new ViewModel(array(
+            'form' => $form,
+        ));
     }
 }

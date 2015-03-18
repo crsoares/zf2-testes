@@ -44,4 +44,9 @@ class SampleModel
 		$this->text = $text;
 		return $this;
 	}
+
+	public function doStuff($array)
+	{
+		return true;
+	}
 }
