@@ -50,6 +50,19 @@ return array(
                     ),
                 ),
             ),
+            'form' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/form[/:action]',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'index',
+                    ),
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
+                ),
+            ),
         ),
     ),
     'service_manager' => array(

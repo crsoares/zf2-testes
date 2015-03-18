@@ -13,6 +13,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Model\Hydrator\SampleModelHydrator;
 use Application\Model\Hydrator\Strategy\SampleHydratorStrategy;
+use Application\Form\NormalForm;
 
 class IndexController extends AbstractActionController
 {
@@ -54,5 +55,14 @@ class IndexController extends AbstractActionController
         echo "<pre>" . print_r($extract, true) . "</pre>";
 
         return new ViewModel();
+    }
+
+    public function formAction()
+    {
+    	$form = new NormalForm();
+
+    	return new ViewModel(array(
+    		'form' => $form,
+    	));
     }
 }

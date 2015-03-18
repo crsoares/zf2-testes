@@ -11,6 +11,7 @@
         "php": ">=5.3.3",
         "zendframework/zendframework": "~2.3",
         "zendframework/zend-developer-tools": "dev-master",
-        "ocramius/ocra-di-compiler": "dev-master"
+        "ocramius/ocra-di-compiler": "dev-master",
+        "doctrine/common": ">=2.1"
     }
 }
