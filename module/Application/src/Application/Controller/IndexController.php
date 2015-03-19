@@ -111,4 +111,15 @@ class IndexController extends AbstractActionController
             'form' => $form,
         ));
     }
+
+    public function exampleViewscriptAction()
+    {
+    	$builder = new AnnotationBuilder();
+
+    	$annotationForm = new AnnotationForm();
+
+    	$form = $builder->createForm($annotationForm);
+
+    	return new ViewModel(array('formObject' => $formObject));
+    }
 }

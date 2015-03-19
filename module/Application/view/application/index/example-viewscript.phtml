@@ -1,0 +1,15 @@
+<?php
+
+/*echo $this->form()->openTag();
+echo $this->form()->closeTag();
+
+echo $this->form()->openTag($formObject);
+echo $this->form()->closeTag();*/
+
+$buttonElement = new \Zend\Form\Element\Button('somebutton');
+$buttonElement->setLabel('teste');
+echo $this->formButton($buttonElement);
+
+echo $this->formButton()->openTag($buttonElement);
+	echo '<span>Life is short, click now!</span>';
+echo $this->formButton()->closeTag();
